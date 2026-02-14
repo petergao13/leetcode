@@ -8,7 +8,6 @@ class Solution(object):
         """dp[i] = how many ways can you sum to i"""
         myarray = [0 for i in range(target+1)]
         myarray[0] = 1
-        myset = set(myarray)
         for i in range(1, target+1):
             sum = 0
             for num in nums:
