@@ -12,5 +12,6 @@ class Solution(object):
             return 1
         passed = [0, 1, 2]
         for i in range(n-2):
+            """paths to new stair = paths of previous two stairs summed"""
             passed.append(passed[-1]+passed[-2])
         return passed[-1]
