@@ -11,9 +11,8 @@ class Solution(object):
         for i in range(1, target+1):
             sum = 0
             for num in nums:
-                t = i-num
-                if (t >= 0):
-                    sum += myarray[t]
+                if (i-num >= 0):
+                    sum += myarray[i-num]
             myarray[i] = sum
         return myarray[target]
 
