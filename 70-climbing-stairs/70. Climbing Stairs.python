@@ -1,0 +1,16 @@
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        """
+        passed[i] = how many paths there are from start to stair i
+        * added i=0 edge case to line up index with stair count
+        """
+        if (n==1):
+            return 1
+        passed = [0, 1, 2]
+        for i in range(n-2):
+            passed.append(passed[-1]+passed[-2])
+        return passed[-1]
