@@ -1,0 +1,40 @@
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution(object):
+    def cloneGraph(self, node):
+        """
+        :type node: Node
+        :rtype: Node
+        """
+        if not node: return None
+
+        created = {}
+        new = self.cloneGraphHelper(node, created)
+
+        return new
+
+    def cloneGraphHelper(self, og, created):
+        """
+        :type og, new, visited: Node, Node, set()
+        :rtype: Node
+        """
+        """Copy current node and add to created"""
+        if og in created:
+            return created[og]
+        
+        new = Node(og.val)
+        created[og] = new
+        
+        """Recursion through neighbors"""
+        for og_neighbor in og.neighbors:
+            new_neighbor = self.cloneGraphHelper(og_neighbor, created)
+            new.neighbors.append(new_neighbor)
+        
+        return new
+        
