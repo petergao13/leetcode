@@ -1,0 +1,30 @@
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        def _helper(m, n, grid):
+            if m < 0 or m == len(grid) or n < 0 or n == len(grid[0]):
+                return
+            if grid[m][n] == "0" or (m, n) in seen:
+                return
+
+            seen.add((m, n))
+            _helper(m+1, n, grid)
+            _helper(m-1, n, grid)
+            _helper(m, n+1, grid)
+            _helper(m, n-1, grid)
+            return
+        
+        m, n = len(grid), len(grid[0])
+        seen = set()
+        num = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "0" or (i, j) in seen:
+                    continue
+                num += 1
+                _helper(i, j, grid)
+        return num
+        
