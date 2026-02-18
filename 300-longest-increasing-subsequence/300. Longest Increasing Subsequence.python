@@ -1,0 +1,21 @@
+class Solution(object):
+    def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        """
+        LIS[i] = len of longest increasing subsequence starting at index i
+        """
+        n = len(nums)
+        LIS = [-1 for i in range(n)]
+        LIS[n-1] = 1
+        for i in range(n-2, -1, -1):
+            max_LIS = 1
+            for j in range(i+1, n, 1):
+                if nums[i] < nums[j]:
+                    max_LIS = max(max_LIS, LIS[j] + 1)
+            LIS[i] = max_LIS
+        print(LIS)
+        return max(LIS)
+            
