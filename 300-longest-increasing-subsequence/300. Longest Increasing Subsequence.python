@@ -16,6 +16,5 @@ class Solution(object):
                 if nums[i] < nums[j]:
                     max_LIS = max(max_LIS, LIS[j] + 1)
             LIS[i] = max_LIS
-        print(LIS)
         return max(LIS)
             
