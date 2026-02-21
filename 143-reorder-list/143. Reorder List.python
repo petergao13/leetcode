@@ -17,7 +17,7 @@ class Solution(object):
             print("-"*8)
         
         if head == None or head.next == None:
-            return head
+            return
 
         '''find middle and end of linked list'''
         slow, fast = head, head.next
